@@ -58,12 +58,12 @@ public class ToDoServiceIml implements ToDoService {
     public List<ToDo> updateAllTodos(List<ToDo> toDoList) {
         List<ToDo> toDos = new ArrayList<>();
         for (ToDo todo : toDoList) {
-            if (repository.findById(todo.getId()).isPresent()) {
-                ToDo toDo = repository.findById(todo.getId()).get();
-                toDo.setName(todo.getName());
-                toDo.setDescription(todo.getDescription());
-                toDo.setCompleted(todo.isCompleted());
-                toDos.add(toDo);
+            if (repository.existsById(todo.getId())) {
+                ToDo editTodo = repository.findById(todo.getId()).get();
+                editTodo.setName(todo.getName());
+                editTodo.setDescription(todo.getDescription());
+                editTodo.setCompleted(todo.isCompleted());
+                toDos.add(editTodo);
             }
         }
         repository.saveAll(toDos);
@@ -72,12 +72,11 @@ public class ToDoServiceIml implements ToDoService {
 
     @Override
     public ToDo updateTodoById(Long id, ToDo toDo1) {
-        Optional<ToDo> toDo = repository.findById(id);
-        if (toDo.isPresent()) {
+        if (repository.existsById(id)) {
             repository.save(toDo1);
             return toDo1;
         }
-        throw new ToDoNotFoundException("No such todo by id " + id);
+        throw new ToDoNotFoundException("No such todo by id " + id + " for edit");
 
     }
 
