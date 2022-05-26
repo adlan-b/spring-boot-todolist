@@ -5,9 +5,7 @@ import main.service.ToDoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -38,6 +36,12 @@ public class DefaultController {
         service.deleteTodoById(id);
         return "redirect:/";
     }
+
+//    @PutMapping("/update/{id}")
+//    public String updateTodoById(@PathVariable("id") Long id, @RequestBody ToDo toDo) throws Exception {
+//       service.updateTodoById(id, toDo);
+//       return ;
+//    }
 
     @Transactional
     @PostMapping ("/completed/{id}")
