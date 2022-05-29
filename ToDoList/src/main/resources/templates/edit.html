@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta content="text/html; charset=UTF-8"/>
+  <title>Edit Todo</title>
+</head>
+<body>
+<div align="center">
+  <h1>Edit Todo</h1>
+  <br />
+  <form action="#" th:action="@{/}" th:object="${todo}"
+        method="post">
+
+    <table border="0" cellpadding="10">
+      <tr>
+        <td>Product ID:</td>
+        <td>
+          <input type="text" th:field="*{id}" readonly="readonly" />
+        </td>
+      </tr>
+
+      <tr>
+        <td>Todo Name:</td>
+        <td>
+          <input type="text" th:field="*{name}" />
+        </td>
+      </tr>
+
+      <tr>
+        <td>Todo Description:</td>
+        <td>
+          <input type="text" th:field="*{description}" />
+        </td>
+      </tr>
+
+      <tr>
+        <td>Deadline Date:</td>
+        <td>
+          <input type="text" th:field="*{deadlineDate}" />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2"><button type="submit">Edit Todo</button> </td>
+      </tr>
+    </table>
+  </form>
+</div>
+</body>
+</html>
