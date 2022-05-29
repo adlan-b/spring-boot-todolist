@@ -3,92 +3,59 @@
 <head>
     <title>TodoList</title>
     <meta content="text/html; charset=UTF-8"/>
-    <style>
-        .description {
-            margin: 15px 50% 15px 15px;
-            color: green;
-            border-left: 2px solid gray;
-            padding-left: 15px;
-        }
+    <link rel="stylesheet" th:href="@{/css/index.css}"/>
 
-        .completed {
-            text-decoration: line-through;
-        }
 
-        .body {
-            width: 500px;
-            margin: 0 auto;
-            color: olivedrab;
-            background: lightblue;
-        }
-        .split {
-            height: 100%;
-            width: 50%;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            overflow-x: hidden;
-            padding-top: 20px;
-        }
-
-        /* Control the left side */
-        .left {
-            left: 0;
-            background-color: cornsilk;
-        }
-
-        /* Control the right side */
-        .right {
-            right: 0;
-            background-color: burlywood;
-        }
-        .centered {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-        }
-    </style>
 
 </head>
 <body class="body">
 <div class="split right">
-    <div class="centered">
-<h1>Task</h1>
-<li th:each="todo: ${todos}" th:class="${todo.completed} ? completed : ''">
-    <span th:text="${todo.name}"></span>
-    <form th:if="${!todo.completed}" method="post" th:action="@{/completed/} + ${todo.id}" style="display: inline"
-          class="completed">
-        <input type="submit" value="✓"/>
-    </form>
-    <form method="post" th:action="@{/delete/} + ${todo.id}" style="display: inline">
-        <input type="submit" value="X"/>
-    </form>
-    <p th:utext="${#strings.replace(#strings.escapeXml(todo.description),'&#10;','&lt;br&gt;')}"
-       class="description"></p>
-</li>
-        </div>
-    </div>
 
-<div class="split left">
-    <div class="centered">
-<h2>Add Task</h2>
-<form method="post" action="/">
-    <div>
-        <input type="text" name="name" placeholder="name task" >
-    </div>
-    <br/>
-    <div>
-        <textarea name="description" placeholder="description"></textarea>
-    </div>
-    <div>
-        <input type="submit" value="ADD">
-    </div>
-</form>
-        </div>
+    <h1>Tasks:</h1>
+    <li th:each="todo: ${todos}" th:class="${todo.completed} ? completed : ''">
+        <span th:text="${todo.name}"></span>
+
+        <form th:if="${!todo.completed}" method="post" th:action="@{/completed/} + ${todo.id}"
+              style="display: block"
+              class="completed">
+            <input type="submit" value="✓"/>
+        </form>
+        <form method="post" th:action="@{/delete/} + ${todo.id}" style="display: compact">
+            <input type="submit" value="X"/>
+
+        </form>
+        <form method="post" th:action="@{/update/} + ${todo.id}" style="display: inline">
+            <input type="submit" value="EDIT"/>
+
+        </form>
+        <p th:utext="${#strings.replace(#strings.escapeXml(todo.description),'&#10;','&lt;br&gt;')}"
+           class="description"></p>
+
+    </li>
 </div>
 
+<div class="split left">
+
+    <form method="post" action="/">
+        <h3>
+
+            <label for="Name">NAME</label>
+            <input type="text" id="Name" name="name" placeholder="name task"/><br/>
+
+            <label for="Deadline">DEADLINE</label>
+            <input type="date" id="Deadline" name="deadlineDate"/><br/>
+
+            <br/>
+
+            <label for="Description">DESCRIPTION</label>
+            <textarea name="description" rows="5" cols="25" id="Description" placeholder="description"></textarea>
+            <br/>
+
+            <input type="submit" value="ADD">
+
+        </h3>
+    </form>
+</div>
 
 
 </body>
