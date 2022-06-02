@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
   <meta content="text/html; charset=UTF-8"/>
   <title>Edit Todo</title>
+  <link rel="stylesheet" th:href="@{/css/edit.css}"/>
 </head>
 <body>
 <div align="center">
@@ -37,7 +37,7 @@
       <tr>
         <td>Deadline Date:</td>
         <td>
-          <input type="text" th:field="*{deadlineDate}" />
+          <input type="date" th:field="*{deadlineDate}" />
         </td>
       </tr>
       <tr>

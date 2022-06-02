@@ -20,14 +20,16 @@
               class="completed">
             <input type="submit" value="✓"/>
         </form>
+
         <form method="post" th:action="@{/delete/} + ${todo.id}" style="display: compact">
             <input type="submit" value="X"/>
 
         </form>
+
         <form method="post" th:action="@{/update/} + ${todo.id}" style="display: inline">
             <input type="submit" value="EDIT"/>
-
         </form>
+
         <p th:utext="${#strings.replace(#strings.escapeXml(todo.description),'&#10;','&lt;br&gt;')}"
            class="description"></p>
 

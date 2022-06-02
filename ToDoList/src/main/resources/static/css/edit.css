@@ -1,0 +1,11 @@
+.body {
+    width: 500px;
+    margin: 0 auto;
+    color: olivedrab;
+    background-color: burlywood;
+}
+
+h1 {
+    color: coral;
+    size: auto;
+}
