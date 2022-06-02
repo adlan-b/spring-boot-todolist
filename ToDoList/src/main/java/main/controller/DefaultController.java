@@ -6,8 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -38,12 +38,12 @@ public class DefaultController {
         return "redirect:/";
     }
 
-    @PostMapping("/update/{id}")
-    public String updateTodoById(@PathVariable(name="id") Long id, ToDo toDo, Model model) throws Exception {
 
-       ToDo todo = service.updateTodoById(id, toDo);
-       model.addAttribute("todo", todo);
-       return "edit";
+    @PostMapping("/update/{id}")
+    public String updateTodoById(@PathVariable(name = "id") Long id, ToDo toDo, Model model) {
+        ToDo todo = service.updateTodoById(id, toDo);
+        model.addAttribute("todo", todo);
+        return "edit";
     }
 
     @Transactional

@@ -4,10 +4,7 @@ import main.exception.ToDoNotFoundException;
 import main.model.ToDo;
 import main.repository.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,10 +68,10 @@ public class ToDoServiceIml implements ToDoService {
     }
 
     @Override
-    public ToDo updateTodoById(Long id, ToDo toDo1) {
+    public ToDo updateTodoById(Long id, ToDo todo) {
         if (repository.existsById(id)) {
-            repository.save(toDo1);
-            return toDo1;
+            repository.save(todo);
+            return todo;
         }
         throw new ToDoNotFoundException("No such todo by id " + id + " for edit");
 

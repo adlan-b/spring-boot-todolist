@@ -1,5 +1,7 @@
 package main.model;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -8,18 +10,32 @@ import java.time.LocalDate;
 @Entity
 @Table(name= "todos")
 public class ToDo {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "completed")
     private boolean completed;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @CreationTimestamp
+    @Column(name = "create_date", updatable = false)
     private LocalDate createDate = LocalDate.now();
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @UpdateTimestamp
+    @Column(name = "edit_date")
     private LocalDate editDate;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "deadline_date")
     private LocalDate deadlineDate;
 
     public ToDo() {
@@ -87,6 +103,8 @@ public class ToDo {
     public void setDeadlineDate(LocalDate deadlineDate) {
         this.deadlineDate = deadlineDate;
     }
+
+
 
     @Override
     public String toString() {
