@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -39,11 +38,17 @@ public class DefaultController {
     }
 
 
-    @PostMapping("/update/{id}")
-    public String updateTodoById(@PathVariable(name = "id") Long id, ToDo toDo, Model model) {
-        ToDo todo = service.updateTodoById(id, toDo);
+    @GetMapping("/update/{id}")
+    public String updateTodoById(@PathVariable(name = "id") Long id, Model model) {
+        ToDo todo = service.getTodoById(id);
         model.addAttribute("todo", todo);
         return "edit";
+    }
+
+    @PostMapping("/update")
+    public String updateTodo(ToDo toDo) {
+        service.addTodoAndReturnID(toDo);
+        return "redirect:/";
     }
 
     @Transactional

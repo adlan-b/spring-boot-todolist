@@ -1,7 +1,7 @@
 
 .description {
     margin: 15px 50% 15px 15px;
-    color: green;
+    color: #005380;
     border-left: 2px solid gray;
     padding-left: 15px;
 }
@@ -13,8 +13,8 @@
 .body {
     width: 500px;
     margin: 0 auto;
-    color: olivedrab;
-    background: lightblue;
+    color: #212609;
+    background: #48bdea;
 }
 
 .split {
@@ -40,8 +40,6 @@
     right: 0;
     background-color: burlywood;
     text-align: center;
-
-
 }
 
 .centered {
@@ -50,15 +48,14 @@
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: left;
-
-
 }
 
 li{
     margin: auto;
-
 }
-
+.span {
+    size: auto;
+}
 label {
     display: inline-block;
     width: 200px;
