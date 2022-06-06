@@ -62,7 +62,6 @@ public class RestTodoController {
              return "Todo with ID "+id+" deleted";
          }
          return "Todo not found";
-
     }
 
 }

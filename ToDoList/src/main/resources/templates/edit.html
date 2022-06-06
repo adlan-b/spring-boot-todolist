@@ -11,6 +11,7 @@
     <br/>
     <form action="#" th:action="@{/update}" th:object="${todo}"
           method="post">
+        <input type="hidden" name="_method" value="PATCH">
 
         <table border="0" cellpadding="10">
             <tr>

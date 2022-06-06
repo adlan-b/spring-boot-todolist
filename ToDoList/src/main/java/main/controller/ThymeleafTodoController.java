@@ -31,7 +31,7 @@ public class ThymeleafTodoController {
         return "redirect:/";
     }
 
-    @PostMapping(value = "/delete/{id}")
+    @DeleteMapping(value = "/delete/{id}")
     public String deleteTodoById(@PathVariable("id") Long id) {
         service.deleteTodoById(id);
         return "redirect:/";
@@ -45,9 +45,9 @@ public class ThymeleafTodoController {
         return "edit";
     }
 
-    @PostMapping("/update")
+    @PatchMapping("/update")
     public String updateTodo(ToDo toDo) {
-        service.addTodoAndReturnID(toDo);
+        service.updateTodoById(toDo.getId(), toDo);
         return "redirect:/";
     }
 

@@ -24,6 +24,7 @@
                 </th>
                 <th>
                     <form method="post" th:action="@{/delete/} + ${todo.id}" style="display: inline">
+                        <input type="hidden" name="_method" value="DELETE">
                         <input type="submit" value="X"/>
                     </form>
                 </th>
@@ -44,7 +45,6 @@
 </div>
 
 <div class="split left">
-
     <form method="post" action="/">
         <h3>
             <label for="Name">NAME</label>
