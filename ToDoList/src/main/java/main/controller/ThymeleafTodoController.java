@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-public class DefaultController {
+public class ThymeleafTodoController {
 
     private final ToDoService service;
 
-    public DefaultController(ToDoService service) {
+    public ThymeleafTodoController(ToDoService service) {
         this.service = service;
     }
 
