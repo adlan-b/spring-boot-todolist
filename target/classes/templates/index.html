@@ -6,33 +6,40 @@
     <link rel="stylesheet" th:href="@{/css/index.css}"/>
 
 
-
 </head>
 <body class="body">
 <div class="split right">
 
     <h1>Tasks:</h1>
     <li th:each="todo: ${todos}" th:class="${todo.completed} ? completed : ''">
-        <h2><span th:text="${todo.name}"></span></h2>
-        <h3>
-        <form th:if="${!todo.completed}" method="post" th:action="@{/completed/} + ${todo.id}" style="display: inline"
-              class="completed">
-            <input type="submit" value="✓"/>
-        </form>
-
-        <form method="post" th:action="@{/delete/} + ${todo.id}" style="display: compact">
-            <input type="submit" value="X"/>
-
-        </form>
-
-        <form method="get" th:action="@{/update/} + ${todo.id}" style="display: inline">
-            <input type="submit" value="EDIT"/>
-        </form>
-
-        <p th:utext="${#strings.replace(#strings.escapeXml(todo.description),'&#10;','&lt;br&gt;')}"
-           class="description"></p>
-        </h3>
-
+        <table>
+            <tr>
+                <th th:text="${todo.name}"></th>
+                <th>
+                    <form th:if="${!todo.completed}" method="post" th:action="@{/completed/} + ${todo.id}"
+                          style="display: inline"
+                          class="completed">
+                        <input type="submit" value="✓"/>
+                    </form>
+                </th>
+                <th>
+                    <form method="post" th:action="@{/delete/} + ${todo.id}" style="display: inline">
+                        <input type="submit" value="X"/>
+                    </form>
+                </th>
+                <th>
+                    <form method="get" th:action="@{/update/} + ${todo.id}" style="display: inline">
+                        <input type="submit" value="EDIT"/>
+                    </form>
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <p th:utext="${#strings.replace(#strings.escapeXml(todo.description),'&#10;','&lt;br&gt;')}"
+                       class="description"></p>
+                </td>
+            </tr>
+        </table>
     </li>
 </div>
 
