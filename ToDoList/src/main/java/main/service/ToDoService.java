@@ -13,4 +13,5 @@ public interface ToDoService {
     ToDo updateTodoById(Long id, ToDo todo);
     void deleteAllTodos();
     boolean deleteTodoById(Long id);
+    List<ToDo> getAllTodosByStatus(boolean status);
 }

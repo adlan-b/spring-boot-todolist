@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Show page</title>
+</head>
+
+<body bgcolor="#ffe4c4">
+<h1 style="text-align: center">Completed TASKS</h1>
+<li th:each="todo: ${todos}" style="text-align: center">
+
+    <p><strong>NAME: </strong> <a th:text="${todo.name}" aria-readonly="true" ></a></p>
+    <p><strong>CREATE DATE: </strong> <a th:text="${todo.createDate}" aria-readonly="true"></a></p>
+    <p><strong>DEADLINE DATE: </strong> <a th:text="${todo.deadlineDate}" aria-readonly="true"></a></p>
+    <p><strong>DESCRIPTION: </strong><label>
+        <textarea th:text="${todo.description}" readonly="readonly"></textarea>
+    </label></p>
+
+</li>
+
+<div>
+    <table style="width:200px">
+        <tr>
+            <td>
+                <form th:action="@{/}">
+                    <button>GO TO BACK
+                    </button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

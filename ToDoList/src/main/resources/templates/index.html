@@ -16,14 +16,14 @@
             <tr>
                 <th th:text="${todo.name}"></th>
                 <th>
-                    <form th:if="${!todo.completed}" method="post" th:action="@{/completed/} + ${todo.id}"
+                    <form th:if="${!todo.completed}" method="post" th:action="@{/completed/} + ${todo.id}" title="Done ?"
                           style="display: inline"
                           class="completed">
                         <input type="submit" value="✓"/>
                     </form>
                 </th>
                 <th>
-                    <form method="post" th:action="@{/delete/} + ${todo.id}" style="display: inline">
+                    <form method="post" th:action="@{/delete/} + ${todo.id}" style="display: inline" title="Delete ?">
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="submit" value="X"/>
                     </form>
@@ -61,6 +61,12 @@
 
             <input type="submit" value="ADD TASK">
 
+        </h3>
+    </form>
+
+    <form method="get" th:action="@{/done}" style="display: inline">
+        <h3>
+        <input type="submit" value="SHOW DONE TASKS"/>
         </h3>
     </form>
 </div>

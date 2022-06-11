@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ToDoServiceIml implements ToDoService {
@@ -90,5 +91,13 @@ public class ToDoServiceIml implements ToDoService {
             return true;
         }
         throw new ToDoNotFoundException("Todo not found for deleting");
+    }
+
+    @Override
+    public List<ToDo> getAllTodosByStatus(boolean status) {
+        List<ToDo> list = new ArrayList<>();
+        Iterable<ToDo> todos = repository.findAll();
+        todos.forEach(list::add);
+        return list.stream().filter(x -> x.isCompleted() == status).collect(Collectors.toList());
     }
 }

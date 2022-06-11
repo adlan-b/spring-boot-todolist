@@ -59,4 +59,10 @@ public class ThymeleafTodoController {
         return "redirect:/";
     }
 
+    @GetMapping("/done")
+    public String getAllDoneTasks(Model model) {
+        model.addAttribute("todos",service.getAllTodosByStatus(true));
+        return "show";
+    }
+
 }
