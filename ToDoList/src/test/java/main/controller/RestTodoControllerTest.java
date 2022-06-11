@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-public class ToDoControllerTest extends AbstractIntegrationTest {
+public class RestTodoControllerTest extends AbstractIntegrationTest {
 
     @Test
     public void getTodoListTest() throws Exception {
