@@ -12,6 +12,7 @@
 
     <p><strong>NAME: </strong> <a th:text="${todo.name}" aria-readonly="true" ></a></p>
     <p><strong>CREATE DATE: </strong> <a th:text="${todo.createDate}" aria-readonly="true"></a></p>
+    <p><strong>LAST UPDATE DATE: </strong> <a th:text="${todo.editDate}" aria-readonly="true"></a></p>
     <p><strong>DEADLINE DATE: </strong> <a th:text="${todo.deadlineDate}" aria-readonly="true"></a></p>
     <p><strong>DESCRIPTION: </strong><label>
         <textarea th:text="${todo.description}" readonly="readonly"></textarea>
