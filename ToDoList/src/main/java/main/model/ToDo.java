@@ -2,10 +2,14 @@ package main.model;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.mapping.Collection;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name= "todos")
@@ -37,6 +41,10 @@ public class ToDo {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "deadline_date")
     private LocalDate deadlineDate;
+
+    @OneToMany(mappedBy = "id")
+    private Set<Image> imageSet = new HashSet<>();
+
 
     public ToDo() {
     }
@@ -102,6 +110,15 @@ public class ToDo {
 
     public void setDeadlineDate(LocalDate deadlineDate) {
         this.deadlineDate = deadlineDate;
+    }
+
+    public void addImage(Image image) {
+        imageSet.add(image);
+        image.setToDo(this);
+    }
+
+    public Set<Image> getImage() {
+        return Collections.unmodifiableSet(imageSet);
     }
 
 

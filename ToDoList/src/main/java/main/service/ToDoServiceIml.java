@@ -75,7 +75,6 @@ public class ToDoServiceIml implements ToDoService {
             return todo;
         }
         throw new ToDoNotFoundException("No such todo by id " + id + " for edit");
-
     }
 
     @Override

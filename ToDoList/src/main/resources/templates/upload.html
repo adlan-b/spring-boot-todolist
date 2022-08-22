@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Image</title>
+</head>
+<body>
+
+<div class="mb-3">
+  <form action="#" th:action="@{/uploadFile/{id}(id=${toDo.getId()})}" th:value="${toDo}" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept="image/x-png,image/jpeg,image/jpg"><br />
+    <input type="submit" value="Upload">
+  </form>
+</div>
+
+</body>
+</html>
